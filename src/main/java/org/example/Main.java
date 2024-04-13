@@ -17,14 +17,15 @@ public class Main {
 
     private static final Map<String, String> employees = new HashMap<>(); // Штат сотрудников
 
-    public static void initializeEmployees() {
+    public void initializeEmployees() {
         employees.put("Иванов", "Продукт 1");
         employees.put("Петров", "Продукт 2");
         employees.put("Сидоров", "Продукт 3");
     }
 
     public static void main(String[] args) {
-        initializeEmployees(); // Создание стандартных сотрудников с привязанными товарами
+        Main main = new Main();
+        main.initializeEmployees(); // Создание стандартных сотрудников с привязанными товарами
         Scanner scanner = new Scanner(System.in);
         boolean running = true;
 
@@ -67,7 +68,7 @@ public class Main {
                     fireEmployee(scanner);
                     break;
                 case 7:
-                    showEmployeeList();
+                    main.showEmployeeList();
                     break;
                 case 8:
                     updateEmployeeInfo(scanner);
@@ -76,7 +77,7 @@ public class Main {
                     createProduct(scanner);
                     break;
                 case 10:
-                    showProductList();
+                    main.showProductList();
                     break;
                 case 11:
                     updateProductInfo(scanner);
@@ -165,7 +166,7 @@ public class Main {
         }
     }
 
-    public static void showEmployeeList() {
+    public void showEmployeeList() {
         System.out.println("Список всех работников и их привязанных продуктов:");
         for (Map.Entry<String, String> entry : employees.entrySet()) {
             System.out.println(entry.getKey() + ": " + entry.getValue());
@@ -200,7 +201,7 @@ public class Main {
         System.out.println("Новый продукт успешно создан.");
     }
 
-    public static void showProductList() {
+    public void showProductList() {
         System.out.println("Список всех продуктов:");
         for (String[] product : products) {
             System.out.println("Название: " + product[0] + ", Вес: " + product[1] + ", Цена: " + product[2]);
